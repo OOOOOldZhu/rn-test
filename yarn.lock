@@ -5467,6 +5467,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
+"react-native-voicesdk@https://github.com/OOOOOldZhu/react-native-voicesdk.git":
+  version "1.0.0"
+  resolved "https://github.com/OOOOOldZhu/react-native-voicesdk.git#1741fad8be2e0f16a0be971168072173c5794655"
+
 react-native@0.63.0:
   version "0.63.0"
   resolved "https://registry.npm.taobao.org/react-native/download/react-native-0.63.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-native%2Fdownload%2Freact-native-0.63.0.tgz#1444aa04c34b65ca1dce589db166bd112e982b96"
