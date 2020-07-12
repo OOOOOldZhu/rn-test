@@ -62,11 +62,13 @@ let result = '返回结果';
 
 import RNVoicesdk from 'voicesdk';
 let init =()=>{
-
+    RNVoicesdk.init();
 }
 let onStart = () => {
     console.log('1');
-    RNVoicesdk.startRecognizer();
+    RNVoicesdk.startRecognizer(msg=>{
+        console.log('js接收的数据 => '+msg);
+    });
 };
 let onStop = () => {
     console.log('2');
