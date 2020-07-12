@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "install_voice_sdk": "cd /Users/z/code/rntest/sometest && npm i voicesdk",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -21,7 +22,7 @@
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
     "metro-react-native-babel-preset": "^0.60.0",
-    "react-native-voicesdk": "git+ssh://git@github.com/OOOOOldZhu/react-native-voicesdk.git",
+    "voicesdk": "git+ssh://git@github.com/OOOOOldZhu/react-native-voicesdk.git",
     "react-test-renderer": "16.13.1"
   },
   "jest": {
