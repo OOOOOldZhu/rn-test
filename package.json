@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "react": "16.13.1",
-    "react-native": "0.63.0"
+    "react-native": "0.63.0",
+    "react-native-speech-iflytek": "^1.0.3",
+    "react-native-button": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
@@ -22,7 +24,6 @@
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
     "metro-react-native-babel-preset": "^0.60.0",
-    "voicesdk": "git+ssh://git@github.com/OOOOOldZhu/react-native-voicesdk.git",
     "react-test-renderer": "16.13.1"
   },
   "jest": {
