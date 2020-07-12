@@ -26,8 +26,6 @@ import {
     ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import RNVoicesdk from 'voicesdk';
-
 // //添加 PermissionsAndroid RN自带的
 import { PermissionsAndroid } from 'react-native';
 //就举一个例子 记得加上async异步
@@ -62,24 +60,27 @@ requestReadPermission();
 
 let result = '返回结果';
 
+import RNVoicesdk from 'voicesdk';
+let init =()=>{
+
+}
+let onStart = () => {
+    console.log('1');
+    RNVoicesdk.startRecognizer();
+};
+let onStop = () => {
+    console.log('2');
+    RNVoicesdk.stopRecognizer();
+};
 const App: () => React$Node = () => {
 
-    console.log('RNVoicesdk => ', RNVoicesdk);
+    //console.log('RNVoicesdk => ', RNVoicesdk);
     DeviceEventEmitter.addListener('result', (e) => {
         console.log('接收到通知 => '+e);
         result = e.toString();
     });
-    RNVoicesdk.init(msg=>{
-        console.log("callback msg => "+msg);
-    });
-    let onStart = () => {
-        console.log('1');
-        RNVoicesdk.startRecognizer();
-    };
-    let onStop = () => {
-        console.log('2');
-        RNVoicesdk.stopRecognizer();
-    };
+    init();
+    
     return (
         <>
             <StatusBar barStyle="dark-content"/>
