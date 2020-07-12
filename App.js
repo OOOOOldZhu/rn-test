@@ -8,79 +8,83 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
+    SafeAreaView,
+    StyleSheet,
+    ScrollView,
+    View,
+    Text,
+    Button,
+    StatusBar,
+    DeviceEventEmitter,
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
+    Header,
+    LearnMoreLinks,
+    Colors,
+    DebugInstructions,
+    ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import a from 'react-native-voicesdk';
+import RNVoicesdk from 'react-native-voicesdk';
+
+let result = '返回结果';
 
 const App: () => React$Node = () => {
-  console.log('a => '+a)
-  a.show("jia zai le ",1)
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
 
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+    console.log('RNVoicesdk => ', RNVoicesdk);
+    DeviceEventEmitter.addListener('result', (e) => {
+        console.log('接收到通知 => '+e);
+        result = e.toString();
+    });
+    RNVoicesdk.init(null);
+    let onStart = () => {
+        console.log('1');
+        RNVoicesdk.startRecognizer();
+    };
+    let onStop = () => {
+        console.log('2');
+        RNVoicesdk.stopRecognizer();
+    };
+    return (
+        <>
+            <StatusBar barStyle="dark-content"/>
+            <SafeAreaView>
+                <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
+                    <View style={{height: 30}}/>
+                    <Button
+                        containerStyle={styles.containerStyle}
+                        style={{color: 'white'}}
+                        onPress={onStart}
+                        onResponderTerminationRequest={() => true}
+                        title='点击按钮开始识别'
+                    />
+                    <View style={{height: 30}}/>
+                    <Button
+                        containerStyle={styles.containerStyle}
+                        style={{color: 'white'}}
+                        onPress={onStop}
+                        title='停止识别'
+                    />
+                    <View style={{height: 30}}/>
+                    <Text>{result}</Text>
+
+                </ScrollView>
+            </SafeAreaView>
+        </>
+    );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+    scrollView: {
+        backgroundColor: Colors.lighter,
+    },
+    containerStyle: {
+        backgroundColor: '#0275d8',
+        margin: 4,
+        padding: 4,
+        borderRadius: 2,
+    },
 });
 
 export default App;

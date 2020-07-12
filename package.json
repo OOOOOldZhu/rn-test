@@ -21,8 +21,8 @@
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
     "metro-react-native-babel-preset": "^0.60.0",
-    "react-test-renderer": "16.13.1",
-    "react-native-voicesdk": "https://github.com/OOOOOldZhu/react-native-voicesdk.git"
+    "react-native-voicesdk": "git+ssh://git@github.com/OOOOOldZhu/react-native-voicesdk.git",
+    "react-test-renderer": "16.13.1"
   },
   "jest": {
     "preset": "react-native"
