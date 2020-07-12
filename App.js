@@ -60,17 +60,17 @@ requestReadPermission();
 
 let result = '返回结果';
 
-import RNVoicesdk from 'voicesdk';
+// import RNVoicesdk from 'voicesdk';
 let init =()=>{
 
 }
 let onStart = () => {
     console.log('1');
-    RNVoicesdk.startRecognizer();
+    //RNVoicesdk.startRecognizer();
 };
 let onStop = () => {
     console.log('2');
-    RNVoicesdk.stopRecognizer();
+    //RNVoicesdk.stopRecognizer();
 };
 const App: () => React$Node = () => {
 
