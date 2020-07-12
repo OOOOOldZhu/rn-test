@@ -28,6 +28,38 @@ import {
 
 import RNVoicesdk from 'react-native-voicesdk';
 
+//添加 PermissionsAndroid RN自带的
+import { PermissionsAndroid } from 'react-native';
+//就举一个例子 记得加上async异步
+let  requestReadPermission = async ()=> {
+    try {
+        //返回string类型
+        const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+            PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+            PermissionsAndroid.PERMISSIONS.ACCESS_NETWORK_STATE,
+            PermissionsAndroid.PERMISSIONS.ACCESS_WIFI_STATE,
+            PermissionsAndroid.PERMISSIONS.CHANGE_NETWORK_STATE,
+            PermissionsAndroid.PERMISSIONS.READ_PHONE_STATE,
+            PermissionsAndroid.PERMISSIONS.WRITE_SETTINGS,
+            {
+                //第一次请求拒绝后提示用户你为什么要这个权限
+                'title': '我要读写权限',
+                'message': '没权限我不能工作，同意就好了'
+            }
+        )
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            //this.show("你已获取了读写权限")
+        } else {
+            //this.show("获取读写权限失败")
+        }
+    } catch (err) {
+        //this.show(err.toString())
+    }
+};
+requestReadPermission();
+
 let result = '返回结果';
 
 const App: () => React$Node = () => {
