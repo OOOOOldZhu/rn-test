@@ -9,17 +9,17 @@ import {
     Colors
 } from 'react-native';
 import sdk from './sdk.js';
-export default class VoiceView extends Component {
+sdk.requestPerssion((isErr)=>{});
 
+export default class VoiceView extends Component {
+    
     constructor(props) {
         super(props)
         // bindAll(this, [
         //     'onStart'
         // ]);
         this.state = { result: '暂无结果' }
-    }
-    componentWillMount() {
-        sdk.init();
+        sdk.initRecognizer();
     }
     render() {
 
@@ -29,8 +29,8 @@ export default class VoiceView extends Component {
                 containerStyle={styles.containerStyle}
                 style={{ color: 'white' }}
                 onPress={() => {
-                    sdk.startRecognizer(res => {
-                        this.setState({ result: res })
+                    sdk.startRecognizer((jsonObj,jsonString)=> {
+                        this.setState({ result: ''+jsonString })
                     });
                 }}
                 onResponderTerminationRequest={() => true}

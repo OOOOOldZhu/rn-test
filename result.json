@@ -1,0 +1,102 @@
+{
+    "code": 0, 
+    "data": {
+      "action": "[31|42]", 
+      "intention": "\u6839\u636e\u76ee\u5f55\u67e5\u627e", 
+      "intention_id": 1339, 
+      "kg_answer": "", 
+      "kg_result": [], 
+      "match_rate": 1, 
+      "msg_id": "614_5f0bf84bec89c", 
+      "parameters": {
+        "jianos_user_id": "1", 
+        "jianos_user_id.raw": "1", 
+        "q": "\u8fdb\u5ea6\u7ba1\u7406", 
+        "q.raw": "\u8fdb\u5ea6\u7ba1\u7406", 
+        "user_id": "614", 
+        "user_id.raw": "614", 
+        "v1": "93457A7B623351388A85C6", 
+        "v1.raw": "\u8fdb\u5ea6\u7ba1\u7406"
+      }, 
+      "question": "\u8fdb\u5ea6\u7ba1\u7406", 
+      "result": "\u4e3a\u4f60\u627e\u5230\u4ee5\u4e0b\u5185\u5bb9", 
+      "skill_name": "sys", 
+      "sparql": "", 
+      "trigger": ""
+    }, 
+    "debug": {
+      "_clock": {
+        "global_time": "55.771828 ms", 
+        "match_time": "18.215656 ms", 
+        "regex_time": "8.014679 ms", 
+        "segment_time": "18.869162 ms"
+      }, 
+      "args": {
+        "v1": "93457A7B623351388A85C6", 
+        "v1.raw": "\u8fdb\u5ea6\u7ba1\u7406"
+      }, 
+      "check_must_param_1": "pass", 
+      "check_must_param_2": "pass", 
+      "entity": [
+        {
+          "dictionary": "93457A7B623351388A85C6", 
+          "name": "file.name", 
+          "skill_name": "sys", 
+          "type": "USER", 
+          "word": "\u8fdb\u5ea6\u7ba1\u7406"
+        }, 
+        {
+          "dictionary": "\u8fdb\u5ea6\u7ba1\u7406", 
+          "name": "file.menu", 
+          "skill_name": "sys", 
+          "type": "USER", 
+          "word": "\u8fdb\u5ea6\u7ba1\u7406"
+        }
+      ], 
+      "ext_jianos_user_id": "1", 
+      "ext_q": "\u8fdb\u5ea6\u7ba1\u7406", 
+      "ext_user_id": "614", 
+      "match_count": 3, 
+      "match_intention": "\u6839\u636e\u76ee\u5f55\u67e5\u627e", 
+      "match_usersay": "@file.name:v1", 
+      "must_parameter_list": {}, 
+      "must_parameter_value": {}, 
+      "regex": "(@file.name:([^#]*?)#)", 
+      "regex_question": "@file.name:93457A7B623351388A85C6#", 
+      "regular_list": [
+        [
+          [
+            "@file.menu:\u8fdb\u5ea6\u7ba1\u7406#"
+          ], 
+          {
+            "93457A7B623351388A85C6": "\u8fdb\u5ea6\u7ba1\u7406", 
+            "\u8fdb\u5ea6\u7ba1\u7406": "\u8fdb\u5ea6\u7ba1\u7406"
+          }
+        ], 
+        [
+          [
+            "@file.name:93457A7B623351388A85C6#"
+          ], 
+          {
+            "93457A7B623351388A85C6": "\u8fdb\u5ea6\u7ba1\u7406"
+          }
+        ], 
+        [
+          [
+            "\u8fdb\u5ea6\u7ba1\u7406"
+          ], 
+          {
+            "93457A7B623351388A85C6": "\u8fdb\u5ea6\u7ba1\u7406", 
+            "\u8fdb\u5ea6\u7ba1\u7406": "\u8fdb\u5ea6\u7ba1\u7406"
+          }
+        ]
+      ], 
+      "segment_word": [
+        "\u8fdb\u5ea6\u7ba1\u7406"
+      ], 
+      "skill": [
+        "sys"
+      ]
+    }, 
+    "msg": "success"
+  }
