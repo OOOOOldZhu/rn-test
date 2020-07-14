@@ -8,7 +8,6 @@ import {
     Button,
     Colors
 } from 'react-native';
-import Dialog from "react-native-dialog";
 
 import sdk from './sdk.js';
 sdk.requestPerssion((isErr) => { });
@@ -22,41 +21,34 @@ export default class VoiceView extends Component {
         // ]);
         this.state = {
             result: '暂无结果',
-            isShowing: false
+            enable: true
         }
         sdk.initRecognizer();
     }
     render() {
 
         return <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-            <Dialog.Container visible={this.state.isShowing}>
-                <Dialog.Title>提示</Dialog.Title>
-                <Dialog.Description>
-                    语音正在识别，识别结束后会自动关闭!
-                    </Dialog.Description>
-                {/* <Dialog.Button label="Cancel" />
-                <Dialog.Button label="Delete" /> */}
-            </Dialog.Container>
 
             <View style={{ height: 30 }} />
 
             <Button
                 containerStyle={styles.containerStyle}
-                style={{ color: 'white' }}
                 onPress={() => {
-                    this.setState({ isShowing: true })
+                    if(!this.state.enable){
+                        return;
+                    }
+                    this.setState({ enable: false })
                     sdk.startRecognizer((jsonObj, jsonString) => {
-                        this.setState({ isShowing: false, result: '' + jsonString })
+                        this.setState({ enable: true, result: '' + jsonString })
                     });
                 }}
-                onResponderTerminationRequest={() => true}
-                title='点击按钮开始识别'
+                title={this.state.enable?'点击按钮开始识别':'正在识别中...'}
             />
             <View style={{ height: 30 }} />
             <Button
                 containerStyle={styles.containerStyle}
-                style={{ color: 'white' }}
                 onPress={() => {
+                    this.setState({ enable: true,result: '已经停止识别'})
                     sdk.stopRecognizer();
                 }}
                 title='停止识别'

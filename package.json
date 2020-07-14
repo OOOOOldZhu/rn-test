@@ -23,10 +23,10 @@
     "babel-jest": "^26.1.0",
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
+    "lodash.bindall": "4.4.0",
     "metro-react-native-babel-preset": "^0.60.0",
-    "voicesdk": "git+ssh://git@github.com/OOOOOldZhu/react-native-voicesdk.git",
     "react-test-renderer": "16.13.1",
-    "lodash.bindall": "4.4.0"
+    "voicesdk": "git+ssh://git@github.com/OOOOOldZhu/react-native-voicesdk.git#bb5a17c"
   },
   "jest": {
     "preset": "react-native"

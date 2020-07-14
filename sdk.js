@@ -11,7 +11,7 @@ class SDK {
         this.release.bind(this);
         this.requestPerssion.bind(this);
     }
-    
+
     // init() {
     //     requestPerssion()
     //     .then(_=>{
@@ -24,17 +24,22 @@ class SDK {
         RNVoicesdk.init();
     }
     startRecognizer(callback) {
-        RNVoicesdk.startRecognizer(msg => {
-            console.log('js接收的数据 => ' + msg);
-            msg = msg.replace(/。/,"");
+        RNVoicesdk.startRecognizer(wordObj => {
+            /* wordObj
+               {
+                voiceid:123,
+                word:'语音识别的结果'
+               }
+            */
+            console.log('js接收的数据 => ' + wordObj);
             // 进度管理
-            request(msg)
-            .then(respObj=>generateLast(respObj,msg))
-            .then(resObj=>{
-                let jsonString = JSON.stringify(resObj)
-                callback(resObj,jsonString);
-            })
-            .catch(e=>{console.log('请求报错： '+e)});
+            request(wordObj.word)
+                .then(respObj => generateLast(respObj, wordObj))
+                .then(resObj => {
+                    let jsonString = JSON.stringify(resObj)
+                    callback(resObj, jsonString);
+                })
+                .catch(e => { console.log('请求报错： ' + e) });
         });
     }
     stopRecognizer() {
@@ -43,8 +48,8 @@ class SDK {
     release() {
         RNVoicesdk.release();
     }
-    requestPerssion (callback){
-        if(Platform == 'ios'){
+    requestPerssion(callback) {
+        if (Platform == 'ios') {
             return;
         }
         try {
@@ -66,13 +71,13 @@ class SDK {
             )
             if (granted === PermissionsAndroid.RESULTS.GRANTED) {
                 console.log("你已获取了读写权限")
-                if(callback)callback(1)
+                if (callback) callback(1)
             } else {
                 console.log("获取读写权限失败")
-                if(callback)callback(0)
+                if (callback) callback(0)
             }
-        }catch(e){
-            if(callback)callback(0)
+        } catch (e) {
+            if (callback) callback(0)
         }
     }
 }
@@ -87,37 +92,37 @@ let request = (word) => {
         xhr.setRequestHeader("content-type", "application/json");
         xhr.onload = () => {
             if (xhr.status == 200) {
-                let responseObj = JSON.parse(xhr.response) 
-                console.log('NLP请求结果 => ',responseObj)
+                let responseObj = JSON.parse(xhr.response)
+                console.log('NLP请求结果 => ', responseObj)
                 resolve(responseObj);
                 return;
             }
             console.error('NLP请求其他错误 ...')
         };
         xhr.onerror = (e) => {
-            console.error('NLP请求报错'+e)
+            console.error('NLP请求报错' + e)
             reject();
         };
         xhr.send();
     });
 }
 //从result.json摘出所需要的数据
-let generateLast = (response, sdkWord) => {
+let generateLast = (response, wordObj) => {
     return new Promise((resolve, reject) => {
         try {
-            if (!sdkWord) {
-                sdkWord = response.data.question
-            }
             let afterResult = {
+                voiceid: wordObj.voiceid,
                 txt: response.data.question,
                 result: response.data.result,
-                action: response.data.action
+                action: response.data.action,
+                action_value: response.data.action_value
             }
             resolve(afterResult);
         } catch (e) {
             resolve(
                 {
-                    txt: sdkWord,
+                    voiceid: wordObj.voiceid,
+                    txt: wordObj.word,
                     result: 'null',
                     action: 'null'
                 }
