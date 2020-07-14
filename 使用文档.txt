@@ -4,6 +4,7 @@
 1,在你的RN项目中依赖voicesdk,见sometest项目中package.json文件
 （zip包中有插件项目，也可以依赖本地插件项目）
 "voicesdk": "git+ssh://git@github.com/OOOOOldZhu/react-native-voicesdk.git#bb5a17c"
+ node_modle依赖下载完毕之后，你的项目中的android目录最好使用Android studio打开然后同步一下
 
 2，你的项目名/android/app/src/main/java/com/你的项目名  的AndroidManifest.xml增加权限，复制位置详见sometest此.xml文件内容
     <uses-permission android:name="android.permission.INTERNET" />
