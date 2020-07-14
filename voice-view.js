@@ -9,8 +9,15 @@ import {
     Colors
 } from 'react-native';
 
+/*
+ 第一步，申请原生权限
+*/
 import sdk from './sdk.js';
 sdk.requestPerssion((isErr) => { });
+/**
+ * NLP网络请求需要的参数，根据请求需要参数设置
+ */
+//sdk.setConfig({user_id:'number for example 123'});
 
 export default class VoiceView extends Component {
 
@@ -23,8 +30,12 @@ export default class VoiceView extends Component {
             result: '暂无结果',
             enable: true
         }
+        /*
+            第二步，初始化语音识别引擎,此函数也可以放在willMount的生命周期函数中
+        */
         sdk.initRecognizer();
     }
+
     render() {
 
         return <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
@@ -38,6 +49,9 @@ export default class VoiceView extends Component {
                         return;
                     }
                     this.setState({ enable: false })
+                    /*
+                        第三步，引擎开始识别
+                    */
                     sdk.startRecognizer((jsonObj, jsonString) => {
                         this.setState({ enable: true, result: '' + jsonString })
                     });
@@ -49,6 +63,9 @@ export default class VoiceView extends Component {
                 containerStyle={styles.containerStyle}
                 onPress={() => {
                     this.setState({ enable: true,result: '已经停止识别'})
+                    /*
+                        第四步，用户主动停止语音识别
+                    */
                     sdk.stopRecognizer();
                 }}
                 title='停止识别'
@@ -58,7 +75,12 @@ export default class VoiceView extends Component {
 
         </ScrollView>
     }
-
+    /*
+        第五步，释放语音引擎，节省手机内存
+    */
+    componentWillUnmount(){
+        sdk.release();
+    }
 
 }
 

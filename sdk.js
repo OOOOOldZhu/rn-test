@@ -10,8 +10,17 @@ class SDK {
         this.stopRecognizer.bind(this);
         this.release.bind(this);
         this.requestPerssion.bind(this);
+        this.setConfig.bind(this);
+        this.config = {
+            user_id:'614'
+        }
     }
-
+    /*
+     NLP后端需要的网络请求配置 user_id
+    */
+    setConfig(config){
+        if(config)this.config = config;
+    }
     // init() {
     //     requestPerssion()
     //     .then(_=>{
@@ -85,7 +94,7 @@ class SDK {
 // word = 进度管理
 let request = (word) => {
     return new Promise((resolve, reject) => {
-        let url = 'http://124.207.197.54:8809/api?q=' + word + '&user_id=614&jianos_user_id=1';
+        let url = 'http://124.207.197.54:8809/api?q=' + word + '&user_id='+this.config.user_id+'&jianos_user_id=1';
         let xhr = new XMLHttpRequest();
         xhr.open('get', url, true);
         // xhr.setRequestHeader("Authorization", "Bearer " + token);
