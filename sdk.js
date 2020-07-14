@@ -115,7 +115,7 @@ let generateLast = (response, wordObj) => {
                 txt: response.data.question,
                 result: response.data.result,
                 action: response.data.action,
-                action_value: response.data.action_value
+                //action_value: response.data.action_value
             }
             resolve(afterResult);
         } catch (e) {
