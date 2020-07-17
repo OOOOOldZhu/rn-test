@@ -71,6 +71,15 @@ export default class VoiceView extends Component {
                 title='停止识别'
             />
             <View style={{ height: 30 }} />
+            <Button
+                onPress={() => {
+                    sdk.recognizWithString('进度管理',(jsonObj, jsonString)=>{
+                        this.setState({ enable: true, result: '' + jsonString })
+                    });
+                }}
+                title='使用文字字符串识别'
+            />
+            <View style={{ height: 30 }} />
             <Text>{this.state.result}</Text>
 
         </ScrollView>
