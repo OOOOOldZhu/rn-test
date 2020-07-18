@@ -32,7 +32,7 @@ class SDK {
     // };
     initRecognizer() {
         console.log('initRecognizer()')
-        Voicesdk.init();
+        Voicesdk.initial();
     }
     startRecognizer(callback) {
         Voicesdk.startRecognizer(wordObj => {
