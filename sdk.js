@@ -1,6 +1,10 @@
 
 import { PermissionsAndroid, Platform } from 'react-native';
-import RNVoicesdk from 'voicesdk';
+import Voicesdk from 'voicesdk';
+
+let config = {
+    user_id: '614'
+}
 
 class SDK {
     constructor() {
@@ -11,15 +15,13 @@ class SDK {
         this.release.bind(this);
         this.requestPerssion.bind(this);
         this.setConfig.bind(this);
-        this.config = {
-            user_id:'614'
-        }
+        this.recognizWithString.bind(this);
     }
     /*
      NLP后端需要的网络请求配置 user_id
     */
-    setConfig(config){
-        if(config)this.config = config;
+    setConfig(confi) {
+        if (confi) config = confi;
     }
     // init() {
     //     requestPerssion()
@@ -30,17 +32,17 @@ class SDK {
     // };
     initRecognizer() {
         console.log('initRecognizer()')
-        RNVoicesdk.init();
+        Voicesdk.init();
     }
     startRecognizer(callback) {
-        RNVoicesdk.startRecognizer(wordObj => {
+        Voicesdk.startRecognizer(wordObj => {
             /* wordObj
                {
                 voiceid:123,
                 word:'语音识别的结果'
                }
             */
-            console.log('js接收的数据 => ' + wordObj);
+            console.log('js接收的数据 => ' + wordObj.word);
             // 进度管理
             request(wordObj.word)
                 .then(respObj => generateLast(respObj, wordObj))
@@ -48,14 +50,27 @@ class SDK {
                     let jsonString = JSON.stringify(resObj)
                     callback(resObj, jsonString);
                 })
-                .catch(e => { console.log('请求报错： ' + e) });
+                .catch(e => { console.log('请求报错0： ' + e) });
         });
     }
     stopRecognizer() {
-        RNVoicesdk.stopRecognizer();
+        Voicesdk.stopRecognizer();
     }
     release() {
-        RNVoicesdk.release();
+        Voicesdk.release();
+    }
+    recognizWithString(str, callback) {
+        let wordObj = {
+            voiceid: '0000',
+            word: str
+        }
+        request(wordObj.word)
+            .then(respObj => generateLast(respObj, wordObj))
+            .then(resObj => {
+                let jsonString = JSON.stringify(resObj)
+                callback(resObj, jsonString);
+            })
+            .catch(e => { console.log('请求报错0： ' + e) });
     }
     requestPerssion(callback) {
         if (Platform == 'ios') {
@@ -94,7 +109,7 @@ class SDK {
 // word = 进度管理
 let request = (word) => {
     return new Promise((resolve, reject) => {
-        let url = 'http://124.207.197.54:8809/api?q=' + word + '&user_id='+this.config.user_id+'&jianos_user_id=1';
+        let url = 'http://124.207.197.54:8809/api?q=' + word + '&user_id=' + config.user_id + '&jianos_user_id=1';
         let xhr = new XMLHttpRequest();
         xhr.open('get', url, true);
         // xhr.setRequestHeader("Authorization", "Bearer " + token);

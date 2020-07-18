@@ -56,3 +56,6 @@
             sdk.release();
         }
 
+
+iOS篇：
+1，attributes: Missing required attribute `homepage`.
