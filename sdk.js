@@ -1,6 +1,6 @@
 
 import { PermissionsAndroid, Platform } from 'react-native';
-import RNVoicesdk from 'voicesdk';
+import Voicesdk from 'voicesdk';
 
 let config = {
     user_id: '614'
@@ -32,17 +32,17 @@ class SDK {
     // };
     initRecognizer() {
         console.log('initRecognizer()')
-        RNVoicesdk.init();
+        Voicesdk.init();
     }
     startRecognizer(callback) {
-        RNVoicesdk.startRecognizer(wordObj => {
+        Voicesdk.startRecognizer(wordObj => {
             /* wordObj
                {
                 voiceid:123,
                 word:'语音识别的结果'
                }
             */
-            console.log('js接收的数据 => ' + wordObj);
+            console.log('js接收的数据 => ' + wordObj.word);
             // 进度管理
             request(wordObj.word)
                 .then(respObj => generateLast(respObj, wordObj))
@@ -54,10 +54,10 @@ class SDK {
         });
     }
     stopRecognizer() {
-        RNVoicesdk.stopRecognizer();
+        Voicesdk.stopRecognizer();
     }
     release() {
-        RNVoicesdk.release();
+        Voicesdk.release();
     }
     recognizWithString(str, callback) {
         let wordObj = {

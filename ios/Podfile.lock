@@ -296,7 +296,7 @@ PODS:
     - React-Core (= 0.63.0)
     - React-cxxreact (= 0.63.0)
     - React-jsi (= 0.63.0)
-  - RNVoicesdk (1.0.0):
+  - voicesdk (1.0.1):
     - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -349,7 +349,7 @@ DEPENDENCIES:
   - React-RCTText (from `/Users/z/code/rntest/sometest/node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `/Users/z/code/rntest/sometest/node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `/Users/z/code/rntest/sometest/node_modules/react-native/ReactCommon`)
-  - RNVoicesdk (from `../node_modules/voicesdk/ios`)
+  - voicesdk (from `../node_modules/voicesdk`)
   - Yoga (from `/Users/z/code/rntest/sometest/node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -418,8 +418,8 @@ EXTERNAL SOURCES:
     :path: "/Users/z/code/rntest/sometest/node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "/Users/z/code/rntest/sometest/node_modules/react-native/ReactCommon"
-  RNVoicesdk:
-    :path: "../node_modules/voicesdk/ios"
+  voicesdk:
+    :path: "../node_modules/voicesdk"
   Yoga:
     :path: "/Users/z/code/rntest/sometest/node_modules/react-native/ReactCommon/yoga"
 
@@ -460,10 +460,10 @@ SPEC CHECKSUMS:
   React-RCTText: ba503bf4cce41881ca258ba789c33e017955efdd
   React-RCTVibration: 77ab1cf4a5eb854b88ad5ed3e9d8509ed124525e
   ReactCommon: f63556ee9e41e9802257228237e5e660451a03cf
-  RNVoicesdk: 5d923765b9432ef3a6e2da46a8ca6bd66d1cb92a
+  voicesdk: 384d49bd14ce125c7d980809734a725f53231d87
   Yoga: 7d2edc5b410474191962e6dee88ee67f9b328b6b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 540d8bec0678c04a07edd830e5a3169302b4eb22
+PODFILE CHECKSUM: 2e3d69390a7727884a7870028d66a3e32eb7cbc8
 
 COCOAPODS: 1.9.3
