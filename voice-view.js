@@ -45,6 +45,7 @@ export default class VoiceView extends Component {
             <Button
                 containerStyle={styles.containerStyle}
                 onPress={() => {
+                    console.log('开始按钮点击了 . . .')
                     if(!this.state.enable){
                         return;
                     }
@@ -56,12 +57,13 @@ export default class VoiceView extends Component {
                         this.setState({ enable: true, result: '' + jsonString })
                     });
                 }}
-                title={this.state.enable?'点击按钮开始识别':'正在识别中...'}
+                title={this.state.enable?'开始识别':'正在识别中...'}
             />
             <View style={{ height: 30 }} />
             <Button
                 containerStyle={styles.containerStyle}
                 onPress={() => {
+                    console.log('停止按钮被点击 . . .')
                     this.setState({ enable: true,result: '已经停止识别'})
                     /*
                         第四步，用户主动停止语音识别

@@ -57,7 +57,7 @@ class SDK {
         Voicesdk.stopRecognizer();
     }
     release() {
-        Voicesdk.release();
+        Voicesdk.releaseMSC();
     }
     recognizWithString(str, callback) {
         let wordObj = {
