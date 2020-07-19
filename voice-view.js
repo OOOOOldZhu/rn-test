@@ -14,12 +14,18 @@ import {
  第一步，申请原生权限
 */
 import sdk from './sdk.js';
-sdk.requestPerssion((isErr) => { });
+
 /**
  * NLP网络请求需要的参数，根据请求需要参数设置
  */
 //sdk.setConfig({user_id:'number for example 123'});
-
+sdk.requestPerssion((isErr) => {
+    console.log('JS权限 = ',isErr);
+    if(isErr.toString().indexOf('1')>=0){
+        console.log('JS权限 = 同意');
+    }
+});
+        
 export default class VoiceView extends Component {
 
     constructor(props) {

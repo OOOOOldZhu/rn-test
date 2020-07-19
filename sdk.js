@@ -1,5 +1,6 @@
 
 import { Platform } from 'react-native';
+//import {request,requestMultiple, PERMISSIONS} from 'react-native-permissions';
 let PermissionsAndroid = null;
 if(Platform == 'android'){
     let {PermissionsAndroid} = require('react-native');
@@ -47,7 +48,7 @@ class SDK {
             */
             console.log('js接收的数据 => ' + wordObj.word);
             // 进度管理
-            request(wordObj.word)
+            requestApi(wordObj.word)
                 .then(respObj => generateLast(respObj, wordObj))
                 .then(resObj => {
                     let jsonString = JSON.stringify(resObj)
@@ -67,7 +68,7 @@ class SDK {
             voiceid: '0000',
             word: str
         }
-        request(wordObj.word)
+        requestApi(wordObj.word)
             .then(respObj => generateLast(respObj, wordObj))
             .then(resObj => {
                 let jsonString = JSON.stringify(resObj)
@@ -76,7 +77,11 @@ class SDK {
             .catch(e => { console.log('请求报错0： ' + e) });
     }
     requestPerssion(callback) {
-        if (Platform == 'ios') {
+        console.log('JS申请权限 . . . ',Platform.OS)
+        if (Platform.OS == 'ios') {
+            Voicesdk.requestPermi((codeString)=>{
+                callback(codeString);
+            });
             return;
         }
         try {
@@ -110,7 +115,7 @@ class SDK {
 }
 
 // word = 进度管理
-let request = (word) => {
+let requestApi = (word) => {
     return new Promise((resolve, reject) => {
         let url = 'http://124.207.197.54:8809/api?q=' + word + '&user_id=' + config.user_id + '&jianos_user_id=1';
         let xhr = new XMLHttpRequest();

@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string></string>
+	<string>语音识别需要0</string>
 	<key>NSContactsUsageDescription</key>
-	<string></string>
+	<string>语音识别需要1</string>
 	<key>NSLocationUsageDescription</key>
-	<string></string>
+	<string>语音识别需要2</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>语音识别需要3</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
