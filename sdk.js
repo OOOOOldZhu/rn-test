@@ -1,5 +1,9 @@
 
-import { PermissionsAndroid, Platform } from 'react-native';
+import { Platform } from 'react-native';
+let PermissionsAndroid = null;
+if(Platform == 'android'){
+    let {PermissionsAndroid} = require('react-native');
+}
 import Voicesdk from 'voicesdk';
 
 let config = {
@@ -31,7 +35,6 @@ class SDK {
     //     .catch(e=>{})
     // };
     initRecognizer() {
-        console.log('initRecognizer()')
         Voicesdk.initial();
     }
     startRecognizer(callback) {

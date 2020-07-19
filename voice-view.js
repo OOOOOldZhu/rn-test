@@ -6,7 +6,8 @@ import {
     View,
     Text,
     Button,
-    Colors
+    Colors,
+    TouchableHighlight
 } from 'react-native';
 
 /*
@@ -33,20 +34,23 @@ export default class VoiceView extends Component {
         /*
             第二步，初始化语音识别引擎,此函数也可以放在willMount的生命周期函数中
         */
+        console.log('sdk.initRecognizer() - - - - - - - - - - - >')
         sdk.initRecognizer();
     }
 
     render() {
-
-        return <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-
-            <View style={{ height: 30 }} />
+        //console.log('render1...')
+        let pClick = (e) => {
+            console.log('pppp')
+        }
+        return <ScrollView onPress={pClick} contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
+            <View onPress={pClick} style={styles.viewStyle} />
 
             <Button
-                containerStyle={styles.containerStyle}
+                style={styles.btnStyle}
                 onPress={() => {
                     console.log('开始按钮点击了 . . .')
-                    if(!this.state.enable){
+                    if (!this.state.enable) {
                         return;
                     }
                     this.setState({ enable: false })
@@ -57,14 +61,14 @@ export default class VoiceView extends Component {
                         this.setState({ enable: true, result: '' + jsonString })
                     });
                 }}
-                title={this.state.enable?'开始识别':'正在识别中...'}
+                title={this.state.enable ? '开始识别' : '正在识别中...'}
             />
-            <View style={{ height: 30 }} />
+            <View style={styles.viewStyle} />
             <Button
-                containerStyle={styles.containerStyle}
+                style={styles.btnStyle}
                 onPress={() => {
                     console.log('停止按钮被点击 . . .')
-                    this.setState({ enable: true,result: '已经停止识别'})
+                    this.setState({ enable: true, result: '已经停止识别' })
                     /*
                         第四步，用户主动停止语音识别
                     */
@@ -72,16 +76,17 @@ export default class VoiceView extends Component {
                 }}
                 title='停止识别'
             />
-            <View style={{ height: 30 }} />
+            <View style={styles.viewStyle} />
             <Button
+                style={styles.btnStyle}
                 onPress={() => {
-                    sdk.recognizWithString('进度管理',(jsonObj, jsonString)=>{
+                    sdk.recognizWithString('进度管理', (jsonObj, jsonString) => {
                         this.setState({ enable: true, result: '' + jsonString })
                     });
                 }}
                 title='使用文字字符串识别'
             />
-            <View style={{ height: 30 }} />
+            <View style={styles.viewStyle} />
             <Text>{this.state.result}</Text>
 
         </ScrollView>
@@ -89,7 +94,7 @@ export default class VoiceView extends Component {
     /*
         第五步，释放语音引擎，节省手机内存
     */
-    componentWillUnmount(){
+    componentWillUnmount() {
         sdk.release();
     }
 
@@ -100,11 +105,19 @@ const styles = StyleSheet.create({
         // backgroundColor: Colors.lighter,
         backgroundColor: '#F8F8FF',
     },
-    containerStyle: {
-        backgroundColor: '#0275d8',
+    viewStyle: {
+        backgroundColor: "yellow",
+        height: 30
+    },
+    btnStyle: {
+        backgroundColor: 'blue',
+        height:50,
         margin: 4,
         padding: 4,
         borderRadius: 2,
+        borderColor: 'red',
+        borderWidth: 2,
+        borderRadius: 5
     },
 });
 
