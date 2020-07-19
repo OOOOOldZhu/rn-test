@@ -80,7 +80,11 @@ class SDK {
         console.log('JS申请权限 . . . ',Platform.OS)
         if (Platform.OS == 'ios') {
             Voicesdk.requestPermi((codeString)=>{
-                callback(codeString);
+                if(codeString.toString().indexOf('1')>=0){
+                    callback(1);
+                }else{
+                    callback(0);
+                }
             });
             return;
         }

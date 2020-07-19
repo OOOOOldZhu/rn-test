@@ -19,12 +19,7 @@ import sdk from './sdk.js';
  * NLP网络请求需要的参数，根据请求需要参数设置
  */
 //sdk.setConfig({user_id:'number for example 123'});
-sdk.requestPerssion((isErr) => {
-    console.log('JS权限 = ',isErr);
-    if(isErr.toString().indexOf('1')>=0){
-        console.log('JS权限 = 同意');
-    }
-});
+
         
 export default class VoiceView extends Component {
 
@@ -40,8 +35,10 @@ export default class VoiceView extends Component {
         /*
             第二步，初始化语音识别引擎,此函数也可以放在willMount的生命周期函数中
         */
-        console.log('sdk.initRecognizer() - - - - - - - - - - - >')
-        sdk.initRecognizer();
+        sdk.requestPerssion((errCode) => {
+            console.log('JS权限 = '+errCode);
+            if(errCode == 1)sdk.initRecognizer();
+        });
     }
 
     render() {
