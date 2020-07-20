@@ -21,10 +21,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
-3，iOS端配置：
+3，iOS端配置：见DOC文件
 
 
-4,复制sdk.js文件到你的项目中，调用sdk.js
+4,复制sdk.js文件到你的项目中，调用sdk.json
  /Users/z/code/rntest/sometest/voice-view.js 这个组件中有调用步骤
     I.  /*
         第一步，申请原生权限

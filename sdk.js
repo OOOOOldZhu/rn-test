@@ -1,10 +1,13 @@
 
 import { Platform } from 'react-native';
 //import {request,requestMultiple, PERMISSIONS} from 'react-native-permissions';
-let PermissionsAndroid = null;
-if(Platform == 'android'){
+let PermissionsAndroid,tempP;
+if(Platform.OS == 'android'){
     let {PermissionsAndroid} = require('react-native');
+    tempP = PermissionsAndroid;
 }
+PermissionsAndroid = tempP;
+
 import Voicesdk from 'voicesdk';
 
 let config = {
@@ -76,7 +79,7 @@ class SDK {
             })
             .catch(e => { console.log('请求报错0： ' + e) });
     }
-    requestPerssion(callback) {
+    async requestPerssion(callback) {
         console.log('JS申请权限 . . . ',Platform.OS)
         if (Platform.OS == 'ios') {
             Voicesdk.requestPermi((codeString)=>{
@@ -90,29 +93,25 @@ class SDK {
         }
         try {
             //返回string类型
-            const granted = PermissionsAndroid.request(
+            const granteds = await PermissionsAndroid.requestMultiple([
                 PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
                 PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
                 PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-                PermissionsAndroid.PERMISSIONS.ACCESS_NETWORK_STATE,
-                PermissionsAndroid.PERMISSIONS.ACCESS_WIFI_STATE,
-                PermissionsAndroid.PERMISSIONS.CHANGE_NETWORK_STATE,
+                //PermissionsAndroid.PERMISSIONS.ACCESS_NETWORK_STATE,
+                //PermissionsAndroid.PERMISSIONS.ACCESS_WIFI_STATE,
+                //PermissionsAndroid.PERMISSIONS.CHANGE_NETWORK_STATE,
                 //PermissionsAndroid.PERMISSIONS.READ_PHONE_STATE,
-                PermissionsAndroid.PERMISSIONS.WRITE_SETTINGS,
-                {
-                    //第一次请求拒绝后提示用户你为什么要这个权限
-                    'title': '我要读写权限',
-                    'message': '没权限我不能工作，同意就好了'
-                }
-            )
-            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                console.log("你已获取了读写权限")
+                //PermissionsAndroid.PERMISSIONS.WRITE_SETTINGS,
+            ]);
+            console.log('sdk.js granteds=>',granteds)
+            if (granteds["android.permission.RECORD_AUDIO"] === "granted"
+                &&granteds["android.permission.WRITE_EXTERNAL_STORAGE"] === "granted") {
                 if (callback) callback(1)
-            } else {
-                console.log("获取读写权限失败")
+            }else{
                 if (callback) callback(0)
             }
         } catch (e) {
+            console.log('sdk.js 申请权限报错=>'+e)
             if (callback) callback(0)
         }
     }

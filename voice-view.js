@@ -36,7 +36,7 @@ export default class VoiceView extends Component {
             第二步，初始化语音识别引擎,此函数也可以放在willMount的生命周期函数中
         */
         sdk.requestPerssion((errCode) => {
-            console.log('JS权限 = '+errCode);
+            console.log('view中 JS权限 = '+errCode);
             if(errCode == 1)sdk.initRecognizer();
         });
     }
