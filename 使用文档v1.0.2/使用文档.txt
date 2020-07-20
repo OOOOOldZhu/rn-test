@@ -21,6 +21,11 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+注意：如需在打包或者生成APK的时候进行混淆，请在proguard.cfg中添加如下代码：
+
+    -keep class com.iflytek.**{*;}
+    -keepattributes Signature
+
 3，iOS端配置：见DOC文件
 
 
