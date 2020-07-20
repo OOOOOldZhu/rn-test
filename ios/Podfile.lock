@@ -296,7 +296,7 @@ PODS:
     - React-Core (= 0.63.0)
     - React-cxxreact (= 0.63.0)
     - React-jsi (= 0.63.0)
-  - voicesdk (1.0.1):
+  - voicesdk (1.0.2):
     - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -460,7 +460,7 @@ SPEC CHECKSUMS:
   React-RCTText: ba503bf4cce41881ca258ba789c33e017955efdd
   React-RCTVibration: 77ab1cf4a5eb854b88ad5ed3e9d8509ed124525e
   ReactCommon: f63556ee9e41e9802257228237e5e660451a03cf
-  voicesdk: 384d49bd14ce125c7d980809734a725f53231d87
+  voicesdk: 7f68bca63ea3eb87c3555ba32eb3714eebb6e1ef
   Yoga: 7d2edc5b410474191962e6dee88ee67f9b328b6b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

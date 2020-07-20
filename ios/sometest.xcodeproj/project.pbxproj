@@ -11,7 +11,6 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		19680F7124C342E000A0665B /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19680F7024C342E000A0665B /* iflyMSC.framework */; };
 		19680F7324C3430900A0665B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 19680F7224C3430900A0665B /* libz.tbd */; };
 		19680F7524C3436800A0665B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19680F7424C3436800A0665B /* AVFoundation.framework */; };
 		19680F7724C3437A00A0665B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19680F7624C3437A00A0665B /* SystemConfiguration.framework */; };
@@ -25,6 +24,7 @@
 		19680F8724C343C800A0665B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19680F8624C343C800A0665B /* QuartzCore.framework */; };
 		19680F8924C343CF00A0665B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19680F8824C343CF00A0665B /* CoreGraphics.framework */; };
 		19680F8B24C343DA00A0665B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 19680F8A24C343DA00A0665B /* libc++.tbd */; };
+		19680F9C24C533F500A0665B /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19680F9B24C533F500A0665B /* iflyMSC.framework */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -65,7 +65,6 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sometest/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sometest/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sometest/main.m; sourceTree = "<group>"; };
-		19680F7024C342E000A0665B /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		19680F7224C3430900A0665B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		19680F7424C3436800A0665B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		19680F7624C3437A00A0665B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -79,6 +78,7 @@
 		19680F8624C343C800A0665B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19680F8824C343CF00A0665B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		19680F8A24C343DA00A0665B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		19680F9B24C533F500A0665B /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iflyMSC.framework; path = "../../../../Downloads/react-native-speech-iflytek-master/ios/libs/iflyMSC.framework"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* sometest-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sometest-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* sometest-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sometest-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32B3EB69129D6243581A748E /* Pods-sometest-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sometest-tvOS.release.xcconfig"; path = "Target Support Files/Pods-sometest-tvOS/Pods-sometest-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +113,7 @@
 				19680F8B24C343DA00A0665B /* libc++.tbd in Frameworks */,
 				19680F8924C343CF00A0665B /* CoreGraphics.framework in Frameworks */,
 				19680F8724C343C800A0665B /* QuartzCore.framework in Frameworks */,
+				19680F9C24C533F500A0665B /* iflyMSC.framework in Frameworks */,
 				19680F8524C343BE00A0665B /* AddressBook.framework in Frameworks */,
 				19680F8324C343B500A0665B /* Contacts.framework in Frameworks */,
 				19680F8124C343AB00A0665B /* CoreLocation.framework in Frameworks */,
@@ -123,7 +124,6 @@
 				19680F7724C3437A00A0665B /* SystemConfiguration.framework in Frameworks */,
 				19680F7524C3436800A0665B /* AVFoundation.framework in Frameworks */,
 				19680F7324C3430900A0665B /* libz.tbd in Frameworks */,
-				19680F7124C342E000A0665B /* iflyMSC.framework in Frameworks */,
 				68A74B197DD1EF52E821E2EE /* libPods-sometest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,7 +207,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				19680F7024C342E000A0665B /* iflyMSC.framework */,
+				19680F9B24C533F500A0665B /* iflyMSC.framework */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";

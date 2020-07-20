@@ -146,15 +146,18 @@ let requestApi = (word) => {
 let generateLast = (response, wordObj) => {
     return new Promise((resolve, reject) => {
         try {
+            console.log(11)
             let afterResult = {
                 voiceid: wordObj.voiceid,
-                txt: response.data.question,
+                txt: wordObj.word,
                 result: response.data.result,
                 action: response.data.action,
                 //action_value: response.data.action_value
             }
+            console.log(22)
             resolve(afterResult);
         } catch (e) {
+            console.log(33)
             resolve(
                 {
                     voiceid: wordObj.voiceid,
