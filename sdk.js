@@ -24,6 +24,7 @@ class SDK {
         this.requestPerssion.bind(this);
         this.setConfig.bind(this);
         this.recognizWithString.bind(this);
+        this.play.bind(this);
     }
     /*
      NLP后端需要的网络请求配置 user_id
@@ -49,7 +50,11 @@ class SDK {
                 word:'语音识别的结果'
                }
             */
-            console.log('js接收的数据 => ' + wordObj.word);
+           try{
+            console.log('js接收的数据 => ' + JSON.stringify(wordObj));
+           }catch(e){
+
+           }
             // 进度管理
             requestApi(wordObj.word)
                 .then(respObj => generateLast(respObj, wordObj))
@@ -115,6 +120,10 @@ class SDK {
             if (callback) callback(0)
         }
     }
+    play(wavFileCode){
+        Voicesdk.play(wavFileCode)
+    }
+    
 }
 
 // word = 进度管理
@@ -145,7 +154,6 @@ let requestApi = (word) => {
 let generateLast = (response, wordObj) => {
     return new Promise((resolve, reject) => {
         try {
-            console.log(11)
             let afterResult = {
                 voiceid: wordObj.voiceid,
                 txt: wordObj.word,
@@ -153,10 +161,8 @@ let generateLast = (response, wordObj) => {
                 action: response.data.action,
                 //action_value: response.data.action_value
             }
-            console.log(22)
             resolve(afterResult);
         } catch (e) {
-            console.log(33)
             resolve(
                 {
                     voiceid: wordObj.voiceid,

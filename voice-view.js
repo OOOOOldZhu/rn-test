@@ -19,7 +19,7 @@ import sdk from './sdk.js';
  * NLP网络请求需要的参数，根据请求需要参数设置
  */
 //sdk.setConfig({user_id:'number for example 123'});
-
+let wavFileCode;
         
 export default class VoiceView extends Component {
 
@@ -61,6 +61,7 @@ export default class VoiceView extends Component {
                         第三步，引擎开始识别
                     */
                     sdk.startRecognizer((jsonObj, jsonString) => {
+                        wavFileCode = jsonObj.voiceid;
                         this.setState({ enable: true, result: '' + jsonString })
                     });
                 }}
@@ -78,6 +79,16 @@ export default class VoiceView extends Component {
                     sdk.stopRecognizer();
                 }}
                 title='停止识别'
+            />
+            <View style={styles.viewStyle} />
+            <Button
+                style={styles.btnStyle}
+                title='播放刚才语音识别的音频文件'
+                onPress={() => {
+                    if(wavFileCode){
+                        sdk.play(wavFileCode);
+                    }
+                }}
             />
             <View style={styles.viewStyle} />
             <Button
