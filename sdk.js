@@ -47,13 +47,18 @@ class SDK {
             /* wordObj
                {
                 voiceid:123,
-                word:'语音识别的结果'
+                word:'语音识别的结果',
+                err:'错误信息的描述'
                }
             */
            try{
             console.log('js接收的数据 => ' + JSON.stringify(wordObj));
            }catch(e){
 
+           }
+           if(wordObj.err && wordObj.err != ''){
+               callback(null, null,wordObj.err);
+               return;
            }
             // 进度管理
             requestApi(wordObj.word)

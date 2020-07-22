@@ -60,9 +60,14 @@ export default class VoiceView extends Component {
                     /*
                         第三步，引擎开始识别
                     */
-                    sdk.startRecognizer((jsonObj, jsonString) => {
-                        wavFileCode = jsonObj.voiceid;
-                        this.setState({ enable: true, result: '' + jsonString })
+                    sdk.startRecognizer((jsonObj, jsonString,err) => {
+                        // 注意如果err为defined，那么前两者都为null,详情查看sdk.js源码
+                        if(err){
+                            this.setState({ enable: true, result: err })
+                        }else{
+                            wavFileCode = jsonObj.voiceid;
+                            this.setState({ enable: true, result: '' + jsonString })
+                        }
                     });
                 }}
                 title={this.state.enable ? '开始识别' : '正在识别中...'}
