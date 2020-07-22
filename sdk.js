@@ -120,8 +120,8 @@ class SDK {
             if (callback) callback(0)
         }
     }
-    play(wavFileCode){
-        Voicesdk.play(wavFileCode)
+    play(wavFileCode,callback){
+        Voicesdk.play(wavFileCode,callback)
     }
     
 }

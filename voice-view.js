@@ -86,7 +86,7 @@ export default class VoiceView extends Component {
                 title='播放刚才语音识别的音频文件'
                 onPress={() => {
                     if(wavFileCode){
-                        sdk.play(wavFileCode);
+                        sdk.play(wavFileCode,()=>{});
                     }
                 }}
             />
