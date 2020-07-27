@@ -90,9 +90,11 @@ export default class VoiceView extends Component {
                 style={styles.btnStyle}
                 title='播放刚才语音识别的音频文件'
                 onPress={() => {
-                    if(wavFileCode){
-                        sdk.play(wavFileCode,()=>{});
-                    }
+                    sdk.play(wavFileCode, (errCode) => {
+                        //errCode=0 录音文件不存在，
+                        //errCode=1 播放完成
+                        console.log('播放录音文件的状态码:' + errCode);
+                    });
                 }}
             />
             <View style={styles.viewStyle} />
